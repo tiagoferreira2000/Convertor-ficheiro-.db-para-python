@@ -3,7 +3,7 @@ import mysql.connector
 import xml.etree.ElementTree as ET
 
 
-def carregar_configuracao():
+def carregar_config():
     tree = ET.parse('config.xml')
     root = tree.getroot()
 
@@ -15,7 +15,7 @@ def carregar_configuracao():
     return host, user, password, database
 
 
-host, user, password, database = carregar_configuracao()
+host, user, password, database = carregar_config()
 
 conn = mysql.connector.connect(
     host=host,
