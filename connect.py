@@ -1,9 +1,14 @@
-import sqlite3
 import csv
+import mysql.connector
 
+conn = mysql.connector.connect(
+    host="localhost",
+    user="root",      # Tu nombre de usuario de MySQL
+    password="root",  # Tu contraseña de MySQL
+    database="gestor"  # Nombre de la base de datos a la que deseas conectarte
+)
 
-con = sqlite3.connect("bd/gestor.db")
-cursor = con.cursor()
+cursor = conn.cursor()
 
 
 cursor.execute("""
@@ -26,6 +31,6 @@ with open('gestor.csv', 'w', encoding='utf-8') as ficheiro_csv:
     escritor_csv.writerows(dados)
 
 
-con.close()
+conn.close()
 
 print("Ficheiro CSV criado com sucesso!")
